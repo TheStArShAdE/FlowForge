@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint src/**/*.js",
+    "seed": "node src/config/seed.js"
   },
   "keywords": [],
   "author": "Zameer Ahmed",
