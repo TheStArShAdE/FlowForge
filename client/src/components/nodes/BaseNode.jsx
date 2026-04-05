@@ -62,28 +62,52 @@ const BaseNode = ({
                 <Handle
                     type="target"
                     position={Position.Left}
-                    className="!w-3 !h-3 !rounded-full !border-2 !border-border !bg-muted"
+                    style={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        backgroundColor: accentColor,
+                        border: '2px solid oklch(0.16 0.02 250)',
+                    }}
                 />
             )}
             {handles.right && (
                 <Handle
                     type="source"
                     position={Position.Right}
-                    className="!w-3 !h-3 !rounded-full !border-2 !border-border !bg-muted"
+                    style={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        backgroundColor: accentColor,
+                        border: '2px solid oklch(0.16 0.02 250)',
+                    }}
                 />
             )}
             {handles.top && (
                 <Handle
                     type="target"
                     position={Position.Top}
-                    className="!w-3 !h-3 !rounded-full !border-2 !border-border !bg-muted"
+                    style={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        backgroundColor: accentColor,
+                        border: '2px solid oklch(0.16 0.02 250)',
+                    }}
                 />
             )}
             {handles.bottom && (
                 <Handle
                     type="source"
                     position={Position.Bottom}
-                    className="!w-3 !h-3 !rounded-full !border-2 !border-border !bg-muted"
+                    style={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        backgroundColor: accentColor,
+                        border: '2px solid oklch(0.16 0.02 250)',
+                    }}
                 />
             )}
         </div>

@@ -5,6 +5,7 @@ import {
     Controls,
     MiniMap,
     BackgroundVariant,
+    ConnectionLineType,
 } from '@xyflow/react';
 import '@xyflow/react/dist/base.css';
 import useFlowStore from '@/store/useFlowStore';
@@ -73,7 +74,19 @@ const Canvas = () => {
             <Toolbar />
             <div className="flex flex-1 overflow-hidden">
                 <NodePanel />
-                <div className="flex-1 bg-[oklch(0.19_0.03_250)]" ref={reactFlowWrapper}>
+                <div className="flex-1 bg-[oklch(0.19_0.03_250)] relative" ref={reactFlowWrapper}>
+                    {nodes.length === 0 && (
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                            <div className="flex flex-col items-center gap-3 opacity-40">
+                                <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-muted-foreground flex items-center justify-center">
+                                    <span className="text-3xl">+</span>
+                                </div>
+                                <p className="text-sm text-muted-foreground">
+                                    Drag a node to get started
+                                </p>
+                            </div>
+                        </div>
+                    )}
                     <ReactFlow
                         nodes={nodes}
                         edges={edges}
@@ -87,12 +100,14 @@ const Canvas = () => {
                         onPaneClick={onPaneClick}
                         fitView
                         defaultEdgeOptions={{
+                            type: 'smoothstep',
                             style: {
                                 stroke: 'oklch(0.55 0.08 250)',
                                 strokeWidth: 2,
                             },
                             animated: true,
                         }}
+                        connectionLineType={ConnectionLineType.SmoothStep}
                     >
                         <Background
                             variant={BackgroundVariant.Dots}
@@ -107,7 +122,7 @@ const Canvas = () => {
                                 border: '1px solid oklch(1 0 0 / 8%)',
                             }}
                             nodeColor="oklch(0.35 0.06 250)"
-                            maskColor='oklch(0.16 0.02 250 / 60%)'
+                            maskColor="oklch(0.16 0.02 250 / 60%)"
                         />
                     </ReactFlow>
                 </div>
