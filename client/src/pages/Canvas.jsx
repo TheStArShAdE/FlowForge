@@ -86,6 +86,13 @@ const Canvas = () => {
                         onNodeClick={onNodeClick}
                         onPaneClick={onPaneClick}
                         fitView
+                        defaultEdgeOptions={{
+                            style: {
+                                stroke: 'oklch(0.55 0.08 250)',
+                                strokeWidth: 2,
+                            },
+                            animated: true,
+                        }}
                     >
                         <Background
                             variant={BackgroundVariant.Dots}
