@@ -11,6 +11,7 @@ import useFlowStore from '@/store/useFlowStore';
 import Toolbar from '@/components/Toolbar';
 import NodePanel from '@/components/NodePanel';
 import InspectorPanel from '@/components/InspectorPanel';
+import { nodeTypes } from '@/components/nodes';
 
 let nodeId = 1;
 const getId = () => `node_${nodeId++}`;
@@ -46,7 +47,7 @@ const Canvas = () => {
 
             const newNode = {
                 id: getId(),
-                type: 'default',
+                type: nodeType,
                 position,
                 data: { label: nodeType },
             };
@@ -72,10 +73,11 @@ const Canvas = () => {
             <Toolbar />
             <div className="flex flex-1 overflow-hidden">
                 <NodePanel />
-                <div className="flex-1" ref={reactFlowWrapper}>
+                <div className="flex-1 bg-[oklch(0.19_0.03_250)]" ref={reactFlowWrapper}>
                     <ReactFlow
                         nodes={nodes}
                         edges={edges}
+                        nodeTypes={nodeTypes}
                         onNodesChange={onNodesChange}
                         onEdgesChange={onEdgesChange}
                         onConnect={onConnect}
@@ -85,9 +87,21 @@ const Canvas = () => {
                         onPaneClick={onPaneClick}
                         fitView
                     >
-                        <Background variant={BackgroundVariant.Dots} />
+                        <Background
+                            variant={BackgroundVariant.Dots}
+                            color="oklch(0.55 0.08 250)"
+                            gap={24}
+                            size={2}
+                        />
                         <Controls />
-                        <MiniMap />
+                        <MiniMap
+                            style={{
+                                backgroundColor: 'oklch(0.18 0.025 250)',
+                                border: '1px solid oklch(1 0 0 / 8%)',
+                            }}
+                            nodeColor="oklch(0.35 0.06 250)"
+                            maskColor='oklch(0.16 0.02 250 / 60%)'
+                        />
                     </ReactFlow>
                 </div>
                 <InspectorPanel />
